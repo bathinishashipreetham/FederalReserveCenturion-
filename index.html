@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sign in to Centurion</title>
+<link rel="canonical" href="https://federalreservecenturion.netlify.app/">
+<meta property="og:url" content="https://federalreservecenturion.netlify.app/">
+<meta property="og:site_name" content="Centurion">
 <style>
   :root {
     --bg: #eef1f5;
@@ -59,6 +62,8 @@
     color: var(--accent);
     margin: 0 0 20px;
   }
+  .brand a { color: inherit; text-decoration: none; }
+  .brand a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
   h1 {
     font-size: 26px;
     font-weight: 600;
@@ -147,7 +152,7 @@
 </head>
 <body>
   <main class="card">
-    <p class="brand">CENTURION</p>
+    <p class="brand"><a href="https://federalreservecenturion.netlify.app/">CENTURION</a></p>
     <h1>Sign in to Centurion</h1>
 
     <form id="signin" novalidate>
@@ -155,7 +160,7 @@
       <input id="username" name="username" type="text" autocomplete="username" autofocus aria-describedby="username-error">
       <p class="error" id="username-error" role="alert"></p>
 
-      <a class="link forgot" href="#forgot-username">Forgot username?</a>
+      <a class="link forgot" href="forgot-username.html">Forgot username?</a>
 
       <button type="submit">Next</button>
     </form>
