@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in to Centurion</title>
+<style>
+  :root {
+    --bg: #eef1f5;
+    --card: #ffffff;
+    --text: #14213d;
+    --muted: #5b6678;
+    --line: #c5ccd8;
+    --accent: #1d3f8a;
+    --accent-hover: #15306b;
+    --error: #b3261e;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1422;
+      --card: #172036;
+      --text: #e8ecf5;
+      --muted: #9aa6bd;
+      --line: #3a4560;
+      --accent: #7fa2f0;
+      --accent-hover: #a3bcf6;
+      --error: #f2928c;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 24px 16px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card);
+    border-radius: 10px;
+    padding: 40px 36px 32px;
+    box-shadow: 0 1px 3px rgba(20, 33, 61, .12);
+  }
+  .brand {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: var(--accent);
+    margin: 0 0 20px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0 0 28px;
+    line-height: 1.25;
+  }
+  label {
+    display: block;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  input {
+    width: 100%;
+    font: inherit;
+    font-size: 16px;
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+  }
+  input[aria-invalid="true"] { border-color: var(--error); }
+  .error {
+    color: var(--error);
+    font-size: 14px;
+    margin: 6px 0 0;
+    min-height: 21px;
+  }
+  .link {
+    color: var(--accent);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .link:hover { color: var(--accent-hover); text-decoration: underline; }
+  .link:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  .forgot { display: inline-block; margin: 4px 0 28px; }
+  button {
+    font: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    color: #fff;
+    background: var(--accent);
+    border: 0;
+    border-radius: 6px;
+    padding: 11px 28px;
+    cursor: pointer;
+    float: right;
+  }
+  @media (prefers-color-scheme: dark) { button { color: #0e1422; } }
+  button:hover { background: var(--accent-hover); }
+  .signup {
+    clear: both;
+    padding-top: 28px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  .signup p { margin: 0 0 2px; }
+  footer {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  footer nav { display: flex; gap: 16px; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 440px) { .card { padding: 32px 22px 26px; } }
+</style>
+</head>
+<body>
+  <main class="card">
+    <p class="brand">CENTURION</p>
+    <h1>Sign in to Centurion</h1>
+
+    <form id="signin" novalidate>
+      <label for="username">Username or email</label>
+      <input id="username" name="username" type="text" autocomplete="username" autofocus aria-describedby="username-error">
+      <p class="error" id="username-error" role="alert"></p>
+
+      <a class="link forgot" href="#forgot-username">Forgot username?</a>
+
+      <button type="submit">Next</button>
+    </form>
+
+    <div class="signup">
+      <p>Don’t have a Centurion account?</p>
+      <a class="link" href="#create-account">Create account</a>
+    </div>
+  </main>
+
+  <footer>
+    <span>© Centurion</span>
+    <nav>
+      <a href="#terms">Terms of Use</a>
+      <a href="#privacy">Privacy Policy</a>
+    </nav>
+  </footer>
+
+<script>
+  var form = document.getElementById("signin");
+  var input = document.getElementById("username");
+  var error = document.getElementById("username-error");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var value = input.value.trim();
+    if (!value) {
+      input.setAttribute("aria-invalid", "true");
+      error.textContent = "Enter your username or email.";
+      input.focus();
+      return;
+    }
+    input.removeAttribute("aria-invalid");
+    error.textContent = "";
+    // TODO: send `value` to your backend, then show the password step.
+    console.log("Continue with:", value);
+  });
+
+  input.addEventListener("input", function () {
+    input.removeAttribute("aria-invalid");
+    error.textContent = "";
+  });
+</script>
+</body>
+</html>
