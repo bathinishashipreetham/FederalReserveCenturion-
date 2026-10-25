@@ -6,13 +6,15 @@ body {
 
 body {
     min-height: 100vh;
-    background-color: #eef1f5;
-    background-image: url("afr/images/sso-f17v2-bgimg.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
+    background-image: url(/myprofile/images/sso-f17v2-bgimg.jpg) no-repeat fixed 58% 20% / cover;
+        height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1
+}
     color: var(--text);
     font-family: "Segoe UI", system-ui, -apple-system, Roboto,
                  "Helvetica Neue", Arial, sans-serif;
