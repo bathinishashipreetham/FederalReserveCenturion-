@@ -7,7 +7,7 @@ body {
 body {
     min-height: 100vh;
     background-color: #eef1f5;
-    background-image: url("https://raw.githubusercontent.com/bathinishashipreetham/FederalReserveCenturion-/main/afr/images/sso-f17v2-bgimg.jpg");
+    background-image: url("afr/images/sso-f17v2-bgimg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
