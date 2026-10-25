@@ -35,8 +35,13 @@
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; }
+```css
+html,
 body {
+    min-height: 100%;
     margin: 0;
+}
+body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -45,7 +50,13 @@ body {
     gap: 20px;
     padding: 24px 16px;
 
-    background: url("./afr/images/sso-f17v2-bgimg.jpg") no-repeat fixed 58% 20% / cover;
+    /* Background image */
+    background-color: #eef1f5;
+    background-image: url("./afr/images/sso-f17v2-bgimg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
 
     color: var(--text);
     font-family: "Segoe UI", system-ui, -apple-system, Roboto,
