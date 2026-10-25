@@ -24,7 +24,6 @@ body {
 }
 
 body {
-    background-color: var(--bg);
     background-image: url("images/sso-f17v2-bgimg.jpg");
     background-size: cover;
     background-position: center;
