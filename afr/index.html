@@ -2,224 +2,255 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sign in to Centurion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sign in
 <link rel="canonical" href="https://federalreservecenturion-afr.vercel.app/">
-<link rel="stylesheet" href="style.css">
 <meta property="og:url" content="https://federalreservecenturion-afr.vercel.app/">
 <meta property="og:site_name" content="Centurion">
+</title>
 <style>
-  :root {
-    --bg: #eef1f5;
-    --card: #ffffff;
-    --text: #14213d;
-    --muted: #5b6678;
-    --line: #c5ccd8;
-    --accent: #1d3f8a;
-    --accent-hover: #15306b;
-    --error: #b3261e;
-    color-scheme: light;
+  :root{
+    --bg:#EDE6D6;
+    --background-image: url("./afr/images/sso-f17v2-bgimg.jpg");	
+    --panel:#FAFAF8;
+    --ink:#1F2421;
+    --muted:#6B6F6B;
+    --line:#D8D4CA;
+    --accent:#2F4538;
+    --accent-ink:#F1EFEA;
+    --link:#0572CE;
+    color-scheme: light dark;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0e1422;
-      --card: #172036;
-      --text: #e8ecf5;
-      --muted: #9aa6bd;
-      --line: #3a4560;
-      --accent: #7fa2f0;
-      --accent-hover: #a3bcf6;
-      --error: #f2928c;
-      color-scheme: dark;
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141815;
+      --panel:#1B211C;
+      --ink:#ECEAE3;
+      --muted:#9A9F97;
+      --line:#2C332D;
+      --accent:#7FA98C;
+      --accent-ink:#10140F;
+      --link:#5AA9E6;
     }
   }
-  * { box-sizing: border-box; }
-  html, body { height: 100%; }
-```css
-html,
-body {
-    min-height: 100%;
-    margin: 0;
-}
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    padding: 24px 16px;
-
-    /* Background image */
-    background-color: #eef1f5;
-    background-image: url("./afr/images/sso-f17v2-bgimg.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
-
-    color: var(--text);
-    font-family: "Segoe UI", system-ui, -apple-system, Roboto,
-                 "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.5;
-}
-.card {
-    width: 100%;
-    max-width: 420px;
-    background: var(--card);
-    border-radius: 10px;
-    padding: 40px 36px 32px;
-    box-shadow: 0 1px 3px rgba(20, 33, 61, .12);
-}
-  .brand {
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: .12em;
-    color: var(--accent);
-    margin: 0 0 20px;
+  :root[data-theme="dark"]{
+    --bg:#141815;
+    --panel:#1B211C;
+    --ink:#ECEAE3;
+    --muted:#9A9F97;
+    --line:#2C332D;
+    --accent:#7FA98C;
+    --accent-ink:#10140F;
+    --link:#5AA9E6;
   }
-  .brand a { color: inherit; text-decoration: none; }
-  .brand a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
-h1 {
-  font-size: 26px;
-  font-weight: 600;
-  margin: 0 0 28px;
-  line-height: 1.25;
-  text-align: center;
-}
-  label {
-    display: block;
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 6px;
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+    padding-top:calc(32px + env(safe-area-inset-top,0px));
+    padding-bottom:calc(32px + env(safe-area-inset-bottom,0px));
   }
-  input {
-    width: 100%;
-    font: inherit;
-    font-size: 16px;
-    color: var(--text);
-    background: transparent;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 12px 14px;
+  .wrap{
+    width:100%;
+    max-width:500px;
   }
-  input:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 1px;
-    border-color: var(--accent);
+  .mark{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:28px;
   }
-  input[aria-invalid="true"] { border-color: var(--error); }
-  .error {
-    color: var(--error);
-    font-size: 14px;
-    margin: 6px 0 0;
-    min-height: 21px;
+  .mark .glyph{
+    width:28px;height:28px;
+    border:1.5px solid var(--ink);
+    border-radius:50%;
+    position:relative;
+    flex:none;
   }
-  .link {
-    color: var(--accent);
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
+  .mark .glyph::after{
+    content:"";
+    position:absolute;
+    left:50%;top:50%;
+    width:9px;height:9px;
+    background:var(--accent);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
   }
-  .link:hover { color: var(--accent-hover); text-decoration: underline; }
-  .link:focus-visible, button:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-    border-radius: 3px;
+  .mark span{
+    font-size:15px;
+    letter-spacing:.04em;
+    color:var(--muted);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   }
-  .forgot { display: inline-block; margin: 4px 0 28px; }
-  button {
-    font: inherit;
-    font-weight: 600;
-    font-size: 15px;
-    color: #fff;
-    background: var(--accent);
-    border: 0;
-    border-radius: 6px;
-    padding: 11px 28px;
-    cursor: pointer;
-    float: right;
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:28px 36px;
   }
-  @media (prefers-color-scheme: dark) { button { color: #0e1422; } }
-  button:hover { background: var(--accent-hover); }
-  .signup {
-    clear: both;
-    padding-top: 28px;
-    font-size: 14px;
-    color: var(--muted);
+  h1{
+    margin:0 0 20px;
+    font-size:26px;
+    font-weight:500;
+    line-height:1.2;
+    text-align:center;
   }
-  .signup p { margin: 0 0 2px; }
-  footer {
-    width: 100%;
-    max-width: 420px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    font-size: 13px;
-    color: var(--muted);
+  .sub{
+    margin:0 0 30px;
+    font-size:14.5px;
+    color:var(--muted);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   }
-  footer nav { display: flex; gap: 16px; }
-  footer a { color: var(--muted); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
-  @media (max-width: 440px) { .card { padding: 32px 22px 26px; } }
+  label{
+    display:block;
+    font-size:13px;
+    color:var(--muted);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    margin-bottom:6px;
+  }
+  .field{margin-bottom:14px;}
+  .field input{
+    width:100%;
+    border:none;
+    border-bottom:1px solid var(--line);
+    background:transparent;
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:15px;
+    padding:8px 2px;
+    outline:none;
+    transition:border-color .15s ease;
+  }
+  .field input:focus{
+    border-bottom-color:var(--accent);
+  }
+  .row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:4px 0 26px;
+    font-size:13px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  .row label.check{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:var(--muted);
+    cursor:pointer;
+  }
+  .row input[type=checkbox]{
+    accent-color:var(--accent);
+    width:14px;height:14px;
+  }
+  a{
+    color:var(--link);
+    text-decoration:none;
+  }
+  a:hover{text-decoration:underline;}
+  button{
+    width:100%;
+    padding:13px;
+    background:var(--accent);
+    color:var(--accent-ink);
+    border:none;
+    border-radius:2px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:opacity .15s ease;
+  }
+  button:hover{opacity:.9;}
+  button:focus-visible, a:focus-visible, input:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+  .forgot{
+    margin:16px 0 0;
+    text-align:center;
+    font-size:13.5px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  .foot{
+    margin-top:24px;
+    text-align:center;
+    font-size:13.5px;
+    color:var(--muted);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  .legal{
+    margin-top:40px;
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  .legal a{color:var(--muted);}
+  .panel--secondary{
+    margin-top:20px;
+    padding:28px 36px;
+    text-align:center;
+  }
+  .secondary-title{
+    margin:0 0 16px;
+    font-size:17px;
+    font-weight:500;
+  }
+  .ghost-btn{
+    display:block;
+    width:100%;
+    padding:12px;
+    border:1px solid var(--line);
+    border-radius:2px;
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:15px;
+    font-weight:600;
+    text-decoration:none;
+    transition:border-color .15s ease;
+  }
+  .ghost-btn:hover{
+    border-color:var(--accent);
+    text-decoration:none;
+  }
 </style>
 </head>
 <body>
-  <main class="card">
-    <p class="brand"><a href="https://federalreservecenturion.netlify.app/">CENTURION</a></p>
-    <h1>Sign in to Centurion</h1>
-
-    <form id="signin" novalidate>
-      <label for="username">Username or email</label>
-      <input id="username" name="username" type="text" autocomplete="username" autofocus aria-describedby="username-error">
-      <p class="error" id="username-error" role="alert"></p>
-
-      <a class="link forgot" href="forgot-username.html">Forgot username?</a>
-
-      <button type="submit">Next</button>
-    </form>
-
-    <div class="signup">
-      <p>Don’t have a Centurion account?</p>
-      <a class="link" href="#create-account">Create account</a>
+  <div class="wrap">
+    <div class="panel">
+      <h1>
+  Sign in to
+  <a href="https://federalreservecenturion.netlify.app/"
+     style="color:inherit;text-decoration:none;">
+    Centurion
+  </a>
+</h1>
+      <form onsubmit="event.preventDefault()">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="pass">Password</label>
+          <input id="pass" type="password" autocomplete="current-password" required>
+        </div>
+        <button type="submit">Sign in</button>
+        <p class="forgot"><a href="#">Forgot password?</a></p>
+      </form>
     </div>
-  </main>
-
-  <footer>
-    <span>© Centurion</span>
-    <nav>
-      <a href="#terms">Terms of Use</a>
-      <a href="#privacy">Privacy Policy</a>
-    </nav>
-  </footer>
-
-<script>
-  var form = document.getElementById("signin");
-  var input = document.getElementById("username");
-  var error = document.getElementById("username-error");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var value = input.value.trim();
-    if (!value) {
-      input.setAttribute("aria-invalid", "true");
-      error.textContent = "Enter your username or email.";
-      input.focus();
-      return;
-    }
-    input.removeAttribute("aria-invalid");
-    error.textContent = "";
-    // TODO: send `value` to your backend, then show the password step.
-    console.log("Continue with:", value);
-  });
-
-  input.addEventListener("input", function () {
-    input.removeAttribute("aria-invalid");
-    error.textContent = "";
-  });
-</script>
+    <div class="panel panel--secondary">
+      <p class="secondary-title">Don't have a Centurion Account?</p>
+      <a class="ghost-btn" href="#">Create an account</a>
+    </div>
+    <p class="legal">© Centurion &nbsp;|&nbsp; <a href="#">Terms of Use</a> &nbsp;|&nbsp; <a href="#">Privacy Policy</a></p>
+  </div>
 </body>
 </html>
