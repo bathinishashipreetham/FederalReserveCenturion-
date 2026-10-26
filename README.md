@@ -1,6 +1,6 @@
 # Centurion Corporation
 <div align="center">
-  <img src="logo.png" alt="Centurion Corporation Logo" width="180"/>
+  <img src="https://raw.githubusercontent.com/bathinishashipreetham/FederalReserveCenturion-/main/My%20Account/images/centurion-logo.png.png" alt="Centurion Corporation Logo" width="180"/>
 
   <h1>Centurion Corporation</h1>
 
