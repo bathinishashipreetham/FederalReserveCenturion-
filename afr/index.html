@@ -221,6 +221,24 @@
     border-color:var(--accent);
     text-decoration:none;
   }
+.error-message {
+    display: none;
+    width: 100%;
+    padding: 18px 10px;
+    margin-bottom: 14px;
+    border: 1px solid #ff453a;
+    background: #fff8f7;
+    color: #d93025;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+.error-message.show {
+    display: block;
+}
 </style>
 </head>
 <body>
@@ -233,20 +251,48 @@
     Centurion
   </a>
 </h1>
-      <form onsubmit="event.preventDefault()">
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" type="email" autocomplete="username" required>
-        </div>
-        <div class="field">
-          <label for="pass">Password</label>
-          <input id="pass" type="password" autocomplete="current-password" required>
-        </div>
-        <button type="submit">Sign in</button>
-<p class="forgot">
-  <a href="forgot-username.html">Forgot Username?</a>
-</p>
-      </form>
+<form id="loginForm">
+    <!-- Warning message -->
+    <div id="errorMessage" class="error-message" role="alert">
+        Invalid username or password.
+    </div>
+
+    <div class="field">
+        <label for="email">Email</label>
+        <input
+            id="email"
+            type="email"
+            autocomplete="username"
+            required
+        >
+    </div>
+
+    <div class="field">
+        <label for="pass">Password</label>
+        <input
+            id="pass"
+            type="password"
+            autocomplete="current-password"
+            required
+        >
+    </div>
+
+    <button type="submit">Sign in</button>
+
+    <p class="forgot">
+        <a href="forgot-username.html">Forgot Username?</a>
+    </p>
+</form>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const errorMessage = document.getElementById("errorMessage");
+
+        errorMessage.classList.add("show");
+    });
+</script>
     </div>
     <div class="panel panel--secondary">
       <p class="secondary-title">Don't have a Centurion Account?</p>
