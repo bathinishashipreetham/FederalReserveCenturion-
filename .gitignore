@@ -1,8 +1,12 @@
-# Ignore all files and folders
-*
+Ignore everything inside afr
+
+/afr/
 
 # Keep the README
 !README.md
 
 # Keep the company logo
 !logo.png
+
+#Keep the Gitignore file
+!/.gitignore
