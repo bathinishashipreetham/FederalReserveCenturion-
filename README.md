@@ -1,4 +1,15 @@
 # Centurion Corporation
+<div align="center">
+  <img src="logo.png" alt="Centurion Corporation Logo" width="180"/>
+
+  <h1>Centurion Corporation</h1>
+
+  <p><strong>Empowering Businesses Through Cloud, Data, and AI</strong></p>
+
+  <a href="https://federalreservecenturion-afr.vercel.app/">
+    Visit Our Website
+  </a>
+</div>
 
 ### Empowering Businesses Through Cloud, Data, and AI
 
